@@ -394,6 +394,22 @@
         fontSize:20
       }
     });
+    grid.addOnXIntervalChangeListener((interval)=>{
+      let minY = 99999999;
+      let maxY = 0;
+      for(let i=Math.floor(interval[0]);i<Math.floor(interval[1]);i++){
+        const lowPrice =  data[i][3];
+        const highPrice =  data[i][4];
+        if(highPrice>maxY){
+          maxY = highPrice
+        }
+        if(minY>lowPrice){
+          minY = lowPrice
+        }
+      }
+      grid.setYInterval([minY,maxY])
+      grid.refresh();
+    })
     let kline1 = grid.addKline();
     kline1.setData(data);
     
@@ -453,6 +469,22 @@
         fontSize:10
       }
     });
+    grid2.addOnXIntervalChangeListener((interval)=>{
+      let minY = 99999999;
+      let maxY = 0;
+      for(let i=Math.floor(interval[0]);i<Math.floor(interval[1]);i++){
+        const lowPrice =  data[i][3];
+        const highPrice =  data[i][4];
+        if(highPrice>maxY){
+          maxY = highPrice
+        }
+        if(minY>lowPrice){
+          minY = lowPrice
+        }
+      }
+      grid2.setYInterval([minY,maxY])
+      grid2.refresh();
+    })
     let kline2 = grid2.addKline();
     kline2.setData(data);
     

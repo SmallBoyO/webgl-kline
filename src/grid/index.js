@@ -84,7 +84,28 @@ class Grid {
     };
   }
 
+  addOnXIntervalChangeListener(listener) {
+    this.xIntervalChangeListener = listener;
+  }
+
+  addOnYIntervalChangeListener(listener) {
+    this.yIntervalChangeListener = listener;
+  }
+
+  setXInterval(interval) {
+    this.xAxis.interval = [...interval];
+    this.xAxis.points = [];
+    this.clearSeriesCaculateData();
+  }
+
+  setYInterval(interval) {
+    this.yAxis.interval = [...interval];
+    this.yAxis.points = [];
+    this.clearSeriesCaculateData();
+  }
+
   clearSeriesCaculateData() {
+    this.klineMatrix = null;
     this.seriesList.forEach((series) => {
       if (series.clearCaculateData) {
         series.clearCaculateData();
@@ -144,6 +165,9 @@ class Grid {
       this.klineRectPointData = [];
       this.clearSeriesCaculateData();
       this.refreshAll();
+      if (this.xIntervalChangeListener) {
+        this.xIntervalChangeListener([...this.xAxis.interval]);
+      }
     }
     if (deltaY > 0) {
       // 往下方滚动 缩小
@@ -170,6 +194,9 @@ class Grid {
       this.klineRectPointData = [];
       this.clearSeriesCaculateData();
       this.refreshAll();
+      if (this.xIntervalChangeListener) {
+        this.xIntervalChangeListener([...this.xAxis.interval]);
+      }
     }
   }
 
@@ -311,6 +338,9 @@ class Grid {
             this.klineRectPointData = [];
             this.clearSeriesCaculateData();
             this.refreshAll();
+            if (this.xIntervalChangeListener) {
+              this.xIntervalChangeListener([...this.xAxis.interval]);
+            }
           } else {
             // 向左拉动
             // 恢复 x轴左右间隔 刷新
@@ -323,6 +353,9 @@ class Grid {
             this.klineRectPointData = [];
             this.clearSeriesCaculateData();
             this.refreshAll();
+            if (this.xIntervalChangeListener) {
+              this.xIntervalChangeListener([...this.xAxis.interval]);
+            }
           }
         }
       }

@@ -324,6 +324,12 @@ function Chart(initparam) {
         },
         addKline: () => grid.addKline(),
         addLine: (config) => grid.addLine(config),
+        addOnXIntervalChangeListener: (listener) => {
+          grid.addOnXIntervalChangeListener(listener);
+        },
+        setYInterval: (interval) => {
+          grid.setYInterval(interval);
+        },
       };
     },
   };

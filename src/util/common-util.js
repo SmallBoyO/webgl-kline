@@ -139,9 +139,7 @@ function bindFramebuffer(gl, frameBuffer, texture, width, height) {
     // 检测帧缓冲区对象的配置状态是否成功
     const e = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
     if (gl.FRAMEBUFFER_COMPLETE !== e) {
-      window.console.log('Frame buffer object is incomplete:');
-    } else {
-      window.console.log('Frame buffer object is complete:');
+      window.console.log('Frame buffer object is incomplete');
     }
   } else {
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
