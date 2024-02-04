@@ -5,7 +5,7 @@ const WebpackObfuscator = require('webpack-obfuscator');
 module.exports = {
   entry: './src/chart.js',
   output: {
-    filename: 'chart.js',
+    filename: 'chart.[hash].js',
     libraryExport: 'default',
     library: 'Chart',
     libraryTarget: 'umd',

@@ -50,11 +50,11 @@ class Grid {
       color: config.yAxis.color,
       fontSize: config.yAxis.fontSize,
     };
-    if (this.yAxis.type === 'category') {
+    if (this.yAxis.type === 'category' && this.yAxis.data) {
       this.yAxis.interval = [0, this.yAxis.data.length];
       this.yAxis.initialInterval = [0, this.yAxis.data.length];
     }
-    if (this.xAxis.type === 'category') {
+    if (this.xAxis.type === 'category' && this.xAxis.data) {
       this.xAxis.interval = [0, this.xAxis.data.length];
       this.xAxis.initialInterval = [0, this.xAxis.data.length];
     }
@@ -102,6 +102,22 @@ class Grid {
     this.yAxis.interval = [...interval];
     this.yAxis.points = [];
     this.clearSeriesCaculateData();
+  }
+
+  setXData(data) {
+    this.xAxis.data = data
+    if (this.xAxis.type === 'category' && this.xAxis.data) {
+      this.xAxis.interval = [0, this.xAxis.data.length];
+      this.xAxis.initialInterval = [0, this.xAxis.data.length];
+    }
+  }
+
+  setYData(data) {
+    this.yAxis.data = data
+    if (this.yAxis.type === 'category' && this.yAxis.data) {
+      this.yAxis.interval = [0, this.yAxis.data.length];
+      this.yAxis.initialInterval = [0, this.yAxis.data.length];
+    }
   }
 
   clearSeriesCaculateData() {

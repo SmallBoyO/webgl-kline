@@ -319,8 +319,11 @@ function Chart(initparam) {
       grid.setRefreshAll(refreshChart);
       return {
         refresh: refreshChart,
-        setData: (data) => {
-          grid.setData(data);
+        setXData: (data) => {
+          grid.setXData(data);
+        },
+        setYData: (data) => {
+          grid.setXData(data);
         },
         addKline: () => grid.addKline(),
         addLine: (config) => grid.addLine(config),

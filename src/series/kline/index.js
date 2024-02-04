@@ -9,6 +9,7 @@ class Kline {
 
   setData(data) {
     this.data = data;
+    this.clearCaculateData();
   }
 
   refresh() {
@@ -56,8 +57,8 @@ class Kline {
         this.klineLinePointData.push(highPrice);
         this.klineLinePointData.push(index + 0.5);
         this.klineLinePointData.push(lowPrice);
-        this.klineLinePointColors = this.klineLinePointColors.concat(colors);
-        this.klineLinePointColors = this.klineLinePointColors.concat(colors);
+        Array.prototype.push.apply(this.klineLinePointColors, colors);
+        Array.prototype.push.apply(this.klineLinePointColors, colors);
 
         this.klineRectPointData.push(index + 0.05);
         this.klineRectPointData.push(openPrice);
@@ -73,12 +74,12 @@ class Kline {
         this.klineRectPointData.push(index + 0.95);
         this.klineRectPointData.push(closePrice);
 
-        this.klineRectPointColors = this.klineRectPointColors.concat(colors);
-        this.klineRectPointColors = this.klineRectPointColors.concat(colors);
-        this.klineRectPointColors = this.klineRectPointColors.concat(colors);
-        this.klineRectPointColors = this.klineRectPointColors.concat(colors);
-        this.klineRectPointColors = this.klineRectPointColors.concat(colors);
-        this.klineRectPointColors = this.klineRectPointColors.concat(colors);
+        Array.prototype.push.apply(this.klineRectPointColors, colors);
+        Array.prototype.push.apply(this.klineRectPointColors, colors);
+        Array.prototype.push.apply(this.klineRectPointColors, colors);
+        Array.prototype.push.apply(this.klineRectPointColors, colors);
+        Array.prototype.push.apply(this.klineRectPointColors, colors);
+        Array.prototype.push.apply(this.klineRectPointColors, colors);
       });
     }
     drawLineGroupWithVaringColor(
